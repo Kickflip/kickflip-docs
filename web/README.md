@@ -1,4 +1,4 @@
-![http://i.imgur.com/WzMG5mv.gif](This would be funnier if we used Rails.)
+![This would be funnier if we used Rails.](http://i.imgur.com/MhtKl25.gif)
 
 Kickflip API Docs
 =============
