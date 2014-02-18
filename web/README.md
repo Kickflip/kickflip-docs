@@ -42,7 +42,8 @@ Sample response:
    "aws_access_key":"AKIAJREVS52GQEOMGZ3A",
    "app":"kickflip-ios-123",
    "name":"kickflip-ios-123-w3pi7o",
-   "uuid":"26ac0eea-14c1-4d29-afd7-5d8576aXc1ea"
+   "uuid":"26ac0eea-14c1-4d29-afd7-5d8576aXc1ea",
+   "success":true
 }
 ```
 
@@ -57,7 +58,7 @@ To start a stream, first call:
 
     https://app.kickflip.io/stream/start/
 
-supplying the user's **uuid**, as well as an optional **lat** and **lon** for geo-coded streams, and an optional **private** for private streams.
+supplying the user's **uuid**, as well as an optional **lat**, **lon**, **city**, **state** and **country** for geo-coded streams, and an optional **private** for private streams.
 
 Sample response:
 
