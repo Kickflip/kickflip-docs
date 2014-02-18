@@ -56,7 +56,7 @@ To pause a stream, call:
 
     https://app.kickflip.io/stream/pause/
 
-Clients must include a user's *uuid* and *stream\_id*, and may include an optional *lat* and *lon* to update the location of the stream.
+Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to update the location of the stream.
 
 ### Resuming
 
@@ -66,7 +66,7 @@ To resume a stream, call:
 
     https://app.kickflip.io/stream/resume/
 
-Clients must include a user's *uuid* and *stream\_id*, and may include an optional *lat* and *lon* to update the location of the stream.
+Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to update the location of the stream.
 
 ### Stopping
 
@@ -74,6 +74,6 @@ Streams which are finished must call:
 
     https://app.kickflip.io/stream/stop/
 
-Clients must include a user's *uuid* and *stream\_id*, and may include an optional *lat* and *lon* to define the end of a stream location.
+Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to define the end of a stream location.
 
 It's seriously that easy. You're done.
