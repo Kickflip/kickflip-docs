@@ -34,8 +34,6 @@ Note that all responses will be in JSON format.
 
 ## Streams
 
-Kickflip streams
-
 ### Starting a new Stream
 
 Kickflip clients must call the start stream endpoint in order to get the most recent access tokens and the instructions
@@ -50,10 +48,28 @@ supplying the user's **uuid**, as well as an optional **lat** and **lon** for ge
 
 ### Pausing
 
+Kickflip clients may 'pause' a live stream to indicate that they will resume this same stream later.
+
+To pause a stream, call:
+
     https://app.kickflip.io/stream/pause/
 
+Clients must include a user's uuid and stream\_id, and may include an optional *lat* and *lon* to update the location of the stream.
+
 ### Resuming
+
+Similarly, clients can 'resume' a live stream.
+
+To resume a stream, call:
+
     https://app.kickflip.io/stream/resume/
 
+Clients must include a user's uuid and stream\_id, and may include an optional *lat* and *lon* to update the location of the stream.
+
 ### Stopping
+
+Streams which are finished must call:
+
     https://app.kickflip.io/stream/stop/
+
+Clients must include a user's uuid and stream\_id, and may include an optional *lat* and *lon* to define the end of a stream location. 
