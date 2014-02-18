@@ -1,3 +1,5 @@
+![Wow.](http://i.imgur.com/c5AZQ6v.gif)
+
 kickflip-docs
 =============
 
