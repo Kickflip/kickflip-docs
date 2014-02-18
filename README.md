@@ -3,7 +3,7 @@
 kickflip-docs
 =============
 
-Documentation for the Kickflip SDK (Android, iOS, web).
+Documentation for the [Kickflip Live Video SDK](http://kickflip.io) (Android, iOS, web).
 
 ## [Android](android/README.md)
 
