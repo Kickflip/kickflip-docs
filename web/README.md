@@ -45,8 +45,24 @@ To start a stream, first call:
 
     https://app.kickflip.io/stream/start/
 
-supplying the user's **uuid**, as well as an optional **lat** and **lon** for geo-coded streams, and an optional
-**private** for private streams.
+supplying the user's **uuid**, as well as an optional **lat** and **lon** for geo-coded streams, and an optional **private** for private streams.
+
+Sample response:
+
+```javascript
+    {
+       "aws_secret_key":"5R/B7GiAzX9GkGmR13Tk6HlTz95hQNnuHFd2dP/R",
+       "aws_access_key":"AKIAJREVSX2GQEOMGZ3A",
+       "success":true,
+       "chat_url":"Not implemented yet",
+       "stream_type":"HLS",
+       "kickflip_url":"http://kickflip.io/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85",
+       "bucket_name":"kickflip-ios-123",
+       "streamID":"cd29739a-a9da-4deb-ba9c-e8f9f2a72c85",
+       "stream_url":"https://kickflip-ios-123.s3.amazon.com/kickflip-ios-123-w3pi7o/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85/stream.m3u8",
+       "upload_url":"https://kickflip-ios-123.s3.amazon.com/kickflip-ios-123-w3pi7o/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85/"
+    }
+```
 
 ### Pausing
 
