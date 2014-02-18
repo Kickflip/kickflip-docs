@@ -1,3 +1,5 @@
+![http://i.imgur.com/WzMG5mv.gif](This would be funnier if we used Rails.)
+
 Kickflip API Docs
 =============
 
