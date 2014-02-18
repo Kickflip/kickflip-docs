@@ -15,4 +15,4 @@ You may also wish to see the [iOS SDK source code](https://github.com/Kickflip/k
 
 ## [API](web/README.md)
 
-This is for applications which use. You may also be interested in the [python client source code](http://github.com/Kickflip/python-kickflip).
+This is for applications which use the Kickflip API. You may also be interested in the [python client source code](http://github.com/Kickflip/python-kickflip).
