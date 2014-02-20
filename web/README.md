@@ -38,8 +38,8 @@ Sample response:
 
 ```javascript
 {
-   "aws_secret_key":"5R/B7GiAzq9GkGmR13Tk6HlTz95hQNnuHFd2dP/R",
-   "aws_access_key":"AKIAJREVS52GQEOMGZ3A",
+   "aws_secret_key":"5R/B7GiXXXXXXmR13Tk6HlTz95hQNnuHFd2dP/R",
+   "aws_access_key":"AKIAJREVXXXEOMGZ3A",
    "app":"kickflip-ios-123",
    "name":"kickflip-ios-123-w3pi7o",
    "uuid":"26ac0eea-14c1-4d29-afd7-5d8576aXc1ea",
@@ -64,14 +64,14 @@ Sample response:
 
 ```javascript
 {
-   "aws_secret_key":"5R/B7GiAzX9GkGmR13Tk6HlTz95hQNnuHFd2dP/R",
-   "aws_access_key":"AKIAJREVSX2GQEOMGZ3A",
+   "aws_secret_key":"5R/B7GiAzXXXkGmR13Tk6HlTz95hQNnuHFd2dP/R",
+   "aws_access_key":"AKIAJREVSXXXXQEOMGZ3A",
    "success":true,
    "chat_url":"Not implemented yet",
    "stream_type":"HLS",
    "kickflip_url":"http://kickflip.io/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85",
    "bucket_name":"kickflip-ios-123",
-   "streamID":"cd29739a-a9da-4deb-ba9c-e8f9f2a72c85",
+   "stream_id":"cd29739a-a9da-4deb-ba9c-e8f9f2a72c85",
    "stream_url":"https://kickflip-ios-123.s3.amazon.com/kickflip-ios-123-w3pi7o/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85/stream.m3u8",
    "upload_url":"https://kickflip-ios-123.s3.amazon.com/kickflip-ios-123-w3pi7o/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85/"
 }
