@@ -26,11 +26,13 @@ All Kickflip streams must be started by Kickflip users. Users are necessary to m
 each other . Users can be ephemeral, and clients can create new users as much as they like. However, in most situations
 a single user per client will suffice.
 
+### Creating a New User
+
 To create a new user, call
 
-    https://app.kickflip.io/new/user/
+    https://app.kickflip.io/user/new/
 
-You can also POST an optional **username** to define a username, otherwise one will be randomly generated.
+You can also POST an optional **username**, **email**, **password** and **extra_info** to define a user's account information. If a username is not supplied, one will be randomly generated.
 
 Note that all responses will be in JSON format.
 
@@ -46,6 +48,30 @@ Sample response:
    "success":true
 }
 ```
+
+### Changing a User's Information
+
+To change any information about a user, call this URL
+
+    https://app.kickflip.io/user/change/
+
+and supply a **password**. You can then also define **email**, **extra_info** and **new_password**.
+
+### Getting a User's Info
+
+Get the _publicly available_ information about any user, call this URL
+
+    https://app.kickflip.io/user/info/
+
+and supply a **'username'**.
+
+### Getting a User's Keys
+
+If you wish to persist a user's account accross devices, you'll need to supply a correct **username** and **password** to this endpoint, 
+
+    https://app.kickflip.io/user/uuid/
+
+which will return all of the necessary credentials to use the API and the upload endpoints.
 
 ## Streams
 
