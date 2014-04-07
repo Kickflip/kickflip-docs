@@ -131,4 +131,46 @@ Streams which are finished must call:
 
 Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to define the end of a stream location.
 
-It's seriously that easy. You're done.
+### Stream Information
+
+Information about a stream can be set via the stream information endpoint:
+
+    https://app.kickflip.io/stream/info/
+
+Which will set a stream's **lat**, **lon**, **city**, *state**, **country**, **private**, **title**, **description**, **extra_info**, **thumbnail_url** and **deleted** fields.
+
+### Flagging
+
+Streams which are finished must call:
+
+    https://app.kickflip.io/stream/flag/
+
+If users wish to report inappropriate streams, they may do so by calling the flag endpoint with any valid **stream_id** to increase the flag count of that object. Users may only flag a Stream once per stream.
+
+## Search and Feeds
+
+Kickflip also provides API end points for searching publicly available streams associated with an App.
+
+### Basic Search
+
+To search all streams, simply call:
+
+    https://app.kickflip.io/search/
+
+to receive a paginated list of all streams. Adding a **keyword** field to the POST request will filter all streams with that value. Adding a **results_per_page** field will set the pagination number, and **page** will get the page offset. The resulting streams will be returned as a list under the **streams** key.
+
+### User Search
+
+To get all streams associated with a user, simply call:
+
+    https://app.kickflip.io/search/user/
+
+with a valid **username**.
+
+### Location Search
+
+To get all streams associated with a location, call:
+
+    https://app.kickflip.io/search/location/
+
+with a valid **lat**, **lon** and a **radius** (in degrees).
