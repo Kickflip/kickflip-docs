@@ -32,7 +32,7 @@ To create a new user, call
 
     https://app.kickflip.io/user/new/
 
-You can also POST an optional **username**, **email**, **password** and **extra_info** to define a user's account information. If a username is not supplied, one will be randomly generated.
+You can also POST an optional **username**, **email**, **password**, **display_name**, and **extra_info** to define a user's account information. If a username is not supplied, one will be randomly generated.
 
 Note that all responses will be in JSON format.
 
@@ -55,7 +55,7 @@ To change any information about a user, call this URL
 
     https://app.kickflip.io/user/change/
 
-and supply a **password**. You can then also define **email**, **extra_info** and **new_password**.
+and supply a **password**. You can then also define **email**, **display_name**, **extra_info** and **new_password**.
 
 ### Getting a User's Info
 
