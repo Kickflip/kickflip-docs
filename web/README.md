@@ -137,7 +137,7 @@ Information about a stream can be set via the stream information endpoint:
 
     https://app.kickflip.io/stream/info/
 
-Which will set a stream's **lat**, **lon**, **city**, *state**, **country**, **private**, **title**, **description**, **extra_info**, **thumbnail_url** and **deleted** fields.
+Which will set a stream's **start_lat**, **start_lon**, **end_lat**, **end_lon**, **city**, *state**, **country**, **private**, **title**, **description**, **extra_info**, **thumbnail_url** and **deleted** fields.
 
 ### Flagging
 
