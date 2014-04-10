@@ -131,13 +131,21 @@ Streams which are finished must call:
 
 Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to define the end of a stream location.
 
+### Updating a Stream
+
+Information about a stream can be set via the stream change endpoint:
+
+    https://app.kickflip.io/stream/change/
+
+Which will set a stream's **start_lat**, **start_lon**, **end_lat**, **end_lon**, **city**, *state**, **country**, **private**, **title**, **description**, **extra_info**, **thumbnail_url** and **deleted** fields.
+
 ### Stream Information
 
-Information about a stream can be set via the stream information endpoint:
+Information about a public stream can be retreived via the stream info endpoint:
 
     https://app.kickflip.io/stream/info/
 
-Which will set a stream's **start_lat**, **start_lon**, **end_lat**, **end_lon**, **city**, *state**, **country**, **private**, **title**, **description**, **extra_info**, **thumbnail_url** and **deleted** fields.
+for any public stream which you send a **stream_id** for.
 
 ### Flagging
 
