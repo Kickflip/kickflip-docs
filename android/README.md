@@ -70,30 +70,11 @@ To start broadcasting video:
 To play a Kickflip broadcast within your app:
 
 ```java
-	// Make sure you've called 
-	Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
-	Kickflip.startBroadcastActivity(this, new BroadcastListener() {
-        @Override
-        public void onBroadcastStart() {
-        
-        }
+	Kickflip.setup(this, "CLIENT_ID, CLIENT_SECRET);
+	Kickflip.startMediaPlayerActivity(this, "http://example.com/stream.m3u8");
+```
 
-        @Override
-        public void onBroadcastLive(String watchUrl) { 
-        	Log.i("Kickflip", "This phone is live at " + watchUrl);       
-        }
-
-        @Override
-        public void onBroadcastStop() {
-        
-        }
-
-        @Override
-        public void onBroadcastError() {
-        
-        }
-    });
-	```
+You can obtain a Kickflip [`Stream`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/api/json/Stream.java) raw media url with `stream.getStreamUrl()`. For an HLS broadcast this is a url of form https://xxx.xxx/xxx.m3u8
  
 
 
