@@ -36,27 +36,4 @@ You may also wish to see the [iOS SDK source code](https://github.com/Kickflip/k
 
 ## [API](web/README.md)
 
-This is for applications which use the Kickflip API. You may also be interested in the [python client source code](http://github.com/Kickflip/python-kickflip).
-
-## Roadmap
-
-### 0.9.0
-#### February 2014
-
-    * First public release
-    * HLS live broadcasting
-    * Documented API
-
-### 1.0.0
-#### March 2014
-
-    * Regioned uploading
-    * Transcoding
-    * Thumbs, more stream meta information
-    * Filterable Stream API
-    * Python Client
-
-### 1.1.0
-#### April 2014
-
-    * Chat integration (?)
+This is for applications which use the Kickflip API, or for people who are implementing their own SDKs. You may also be interested in the [python client source code](http://github.com/Kickflip/python-kickflip).
