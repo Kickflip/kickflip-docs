@@ -1,18 +1,101 @@
 Kickflip Android SDK
 =============
 
-This document provides a more in-depth look at the Kickflip Android SDK. 
+This document provides a more in-depth look at the Kickflip Android SDK.
 
-See the [kickflip-android-sdk](https://github.com/Kickflip/kickflip-android-sdk) project for [QuickStart](https://github.com/Kickflip/kickflip-android-sdk#quickstart) and [Build instructions](https://github.com/Kickflip/kickflip-android-sdk#building-this-project).
+**Ready to Develop?**
+See the [kickflip-android-sdk](https://github.com/Kickflip/kickflip-android-sdk) project for [QuickStart](https://github.com/Kickflip/kickflip-android-sdk#quickstart) and [Build instructions](https://github.com/Kickflip/kickflip-android-sdk#building-this-project) if you're ready to start developing.
 
 ## What is the Kickflip Android SDK?
 
-The Kickflip Android SDK strives to make streaming video from an Android device to your [kickflip.io](http://kickflip.io) account a joy.
+We designed the Kickflip Android SDK to make cloud video applications for Android a joy. When paired with a [Kickflip.io](https://kickflip.io) account **this SDK can manage all the plumbing for your cloud video application**: It broadcasts live HD [HTTP-HLS](http://en.wikipedia.org/wiki/HTTP_Live_Streaming) video, manages user profiles, and allows you to query broadcasts made by your users.
 
-Beyond a kickflip.io client, this SDK is a collection of modular audio and video components that greatly ease developing video products for the Android platform. Our development focus is currently live streaming, but the great majority of this SDK is agnostic to that particular cause.
+See the [Kickflip Example Android App](https://github.com/Kickflip/kickflip-android-example) for a basic live video social network written with this SDK.
 
+Beyond a Kickflip.io client, this SDK is a collection of modular audio and video components that enable powerful hardware-accelerated video products for the Android platform. At the top level, you can use this SDK and a Kickflip account to create a live video social network without having to worry about video encoding or storage. With the lower-level classes you could create a unique kind of camera with realtime OpenGL shaders.
+
+
+## Setting up
+
+Before you use the Kickflip API, you must first get your access tokens from the Kickflip dashboard.
+
+### Get the SDK
+
+See the [kickflip-android-sdk quickstart guide](https://github.com/kickflip/kickflip-android-sdk#quickstart).	
 
 ## Architecture
+
+### Kickflip
+
+[`Kickflip`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/Kickflip.java) is the top-level class for easy interaction with the SDK features.
+
+The first thing you'll do is register your application with Kickflip:
+
+```java
+	Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
+```
+This method returns a [`KickflipApiClient`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/api/KickflipApiClient.java) ready to perform API actions on behalf of your account.
+
+```java
+	KickflipApiClient apiClient = Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
+```
+
+To start broadcasting video:
+
+```java
+	Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
+	Kickflip.startBroadcastActivity(this, new BroadcastListener() {
+        @Override
+        public void onBroadcastStart() {
+        
+        }
+
+        @Override
+        public void onBroadcastLive(String watchUrl) { 
+        	Log.i("Kickflip", "This phone is live at " + watchUrl);       
+        }
+
+        @Override
+        public void onBroadcastStop() {
+        
+        }
+
+        @Override
+        public void onBroadcastError() {
+        
+        }
+    });
+	```
+	
+To play a Kickflip broadcast within your app:
+
+```java
+	// Make sure you've called 
+	Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
+	Kickflip.startBroadcastActivity(this, new BroadcastListener() {
+        @Override
+        public void onBroadcastStart() {
+        
+        }
+
+        @Override
+        public void onBroadcastLive(String watchUrl) { 
+        	Log.i("Kickflip", "This phone is live at " + watchUrl);       
+        }
+
+        @Override
+        public void onBroadcastStop() {
+        
+        }
+
+        @Override
+        public void onBroadcastError() {
+        
+        }
+    });
+	```
+ 
+
 
 ### Activities and Fragments
 
