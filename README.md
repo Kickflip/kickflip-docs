@@ -28,11 +28,11 @@ If you need additional help, there is also platform specific documentation:
 
 ## [Android](android/README.md)
 
-You may also wish to see the [Android SDK source code](https://github.com/Kickflip/kickflip-android-sdk) or the Android Example App.
+You may also wish to see the [Android SDK source code](https://github.com/Kickflip/kickflip-android-sdk) or the [Android Example App](https://github.com/kickflip/kickflip-android-example).
 
 ## [iOS](ios/README.md)
 
-You may also wish to see the [iOS SDK source code](https://github.com/Kickflip/kickflip-ios-sdk) or the iOS Example App.
+You may also wish to see the [iOS SDK source code](https://github.com/Kickflip/kickflip-ios-sdk) or the [iOS Example App](https://github.com/Kickflip/kickflip-ios-example).
 
 ## [API](web/README.md)
 
