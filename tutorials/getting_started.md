@@ -25,9 +25,9 @@ You can create as many applications as you like, even on the free plan.
 
 Now that you've registered your application, you'll want to set up your mobile application development environments to use the Kickflip SDK.
 
-[Android Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-android-sdk#quickstart).
+* [Android Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-android-sdk#quickstart).
 
-[iOS Kickflip SDK setup guide](http://github.com/Kickflip/kickflip-ios-sdk).
+* [iOS Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-ios-sdk#quickstart).
 
 ## Next Steps
 
