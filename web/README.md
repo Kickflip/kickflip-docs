@@ -7,7 +7,7 @@ Documentation for the web Kickflip API.
 
 ## Setting up
 
-Before you use the Kickflip API, you must first get your access tokens from the Kickflip dashboard.
+Before you use the Kickflip API, you must first get your access tokens from the [Kickflip dashboard](https://kickflip.io/dash/).
 
 ## Authentication
 
