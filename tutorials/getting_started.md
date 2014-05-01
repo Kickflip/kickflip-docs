@@ -14,7 +14,7 @@ Once you've signed up, you'll need to make your first "Application." This applic
 
 To create your first application, click on the 'New Application' button.
 
-![http://i.imgur.com/INiTZeK.png](New Application)
+![New App](http://i.imgur.com/INiTZeK.png)
 
 Enter in the name of your app and press Submit. Alright! You've registered your first application. On your dashboard, you'll see your Application's information, including the Client ID and Client SDK credentials that you'll need to use with the SDKs. You can also click on the Application to see a detailed list of your streams, your users, and your usage statistics.
 
