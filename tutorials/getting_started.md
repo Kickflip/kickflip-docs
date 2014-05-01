@@ -14,7 +14,7 @@ Once you've signed up, you'll need to make your first "Application." This applic
 
 To create your first application, click on the 'New Application' button.
 
-![http://i.imgur.com/INiTZeK.png](New Application)
+![New App](http://i.imgur.com/INiTZeK.png)
 
 Enter in the name of your app and press Submit. Alright! You've registered your first application. On your dashboard, you'll see your Application's information, including the Client ID and Client SDK credentials that you'll need to use with the SDKs. You can also click on the Application to see a detailed list of your streams, your users, and your usage statistics.
 
@@ -25,9 +25,9 @@ You can create as many applications as you like, even on the free plan.
 
 Now that you've registered your application, you'll want to set up your mobile application development environments to use the Kickflip SDK.
 
-[Android Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-android-sdk#quickstart).
+* [Android Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-android-sdk#quickstart).
 
-[iOS Kickflip SDK setup guide](http://https://github.com/Kickflip/kickflip-ios-sdk).
+* [iOS Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-ios-sdk#quickstart).
 
 ## Next Steps
 

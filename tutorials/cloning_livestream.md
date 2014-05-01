@@ -4,6 +4,12 @@
 
 ## Streams
 
+## Users
+
+### Creating Users
+
+### User Profiles
+
 ### Starting a Stream
 
 ### Listing Streams
@@ -12,8 +18,3 @@
 
 ### Location
 
-## Users
-
-### Creating Users
-
-### User Profiles
