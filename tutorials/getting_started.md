@@ -27,7 +27,7 @@ Now that you've registered your application, you'll want to set up your mobile a
 
 [Android Kickflip SDK quick start guide](https://github.com/Kickflip/kickflip-android-sdk#quickstart).
 
-[iOS Kickflip SDK setup guide](http://https://github.com/Kickflip/kickflip-ios-sdk).
+[iOS Kickflip SDK setup guide](http://github.com/Kickflip/kickflip-ios-sdk).
 
 ## Next Steps
 
