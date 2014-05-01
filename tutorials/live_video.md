@@ -97,7 +97,7 @@ Since it's all just HTML, you can also style your elements using normal CSS.
 
 #### Playing HLS Live Video Streams with Flash
 
-To ensure larger playback compatibility for browsers such as Firefox and Internet Explorer, you'll need to use a Flash-based player for your streams. Fortunately, there are now free and open source flash players which can process Kickflip HLS streams. Note that many of these free flash players are still under active development. There are also
+To ensure larger playback compatibility for browsers such as Firefox and Internet Explorer, you'll need to use a Flash-based player for your streams. Fortunately, there are now free and open source flash players which can process Kickflip HLS streams.
 
 We recommend using Adobe's free and open source [Open Source Media Framework (OSMF)](http://streambox.fr/HLSProvider/osmf/StrobeMediaPlayback.html) player with the free [HLSProvider](https://github.com/mangui/HLSprovider) plugin. HLSProvider also works with JWPlayer5, JWPlayer6, Flowplayer, GrindPlayer, and chromeless without any additional player at all. 
 
@@ -194,5 +194,5 @@ Be sure to replace *YOUR_STATIC_FOLDER*, *YOUR_STREAM_URL.m3u8* and *YOUR_STREAM
 This should then give you a player which looks something like this:
 
 ![The handsome @OnlyInAmerica sporting the latest in web video fashion.](https://i.imgur.com/MjbBm9i.png)
-=======
-To ensure larger playback compatibility for browsers such as Firefox and Internet Explorer, you'll need to use a Flash-based player for your streams. Fortunately, there are now free and open source flash players which can process Kickflip HLS streams.
+
+Tada!
