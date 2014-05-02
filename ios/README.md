@@ -56,7 +56,7 @@ You can also supply `newPassword` when changing an existing user's password.
 Get the _publicly available_ information about any user:
 
 ```obj-c
-    [[KFAPIClient sharedClient] requestUserWithUserName:@"existing-username" callbackBlock:^(KFUser *existingUser, NSError *error) {
+    [[KFAPIClient sharedClient] requestUserInfoForUsername:@"existing-username" callbackBlock:^(KFUser *existingUser, NSError *error) {
         if (existingUser) {
             NSLog(@"you got info for an existing user!");
         }
