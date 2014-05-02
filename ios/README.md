@@ -42,7 +42,7 @@ You can attach additional information in the `extraInfo` field. If a username is
 To change any information about a user:
 
 ```obj-c
-    [[KFAPIClient sharedClient] updateMetadataForUser:activeUser newPassword:nil email:@"test@example.com" displayName:@"Bob Jones II" extraInfo:@{@"otherInfo": @"Any other key/values you would want"}  callbackBlock:^(KFUser *updatedUser, NSError *error) {
+    [[KFAPIClient sharedClient] updateMetadataForActiveUserWithNewPassword:nil email:@"test@example.com" displayName:@"Bob Jones II" extraInfo:@{@"otherInfo": @"Any other key/values you would want"}  callbackBlock:^(KFUser *updatedUser, NSError *error) {
         if (updatedUser) {
             NSLog(@"great, you've got updated a user!");
         }
@@ -126,22 +126,22 @@ Kickflip also provides API end points for searching publicly available streams a
 
 ### Basic Search
 
-To search all streams, simply call the below method with no keyword:
+To search all streams, simply call the below method with a keyword:
 
 ```obj-c
-    [[KFAPIClient sharedClient] requestStreamsByKeyword:nil callbackBlock:^(NSArray *streams, NSError *error) {
+    [[KFAPIClient sharedClient] requestStreamsByKeyword:@"skateboard" pageNumber:1 itemsPerPage:10 callbackBlock:^(NSArray *streams, KFPaginationInfo *paginationInfo, NSError *error) {
         NSLog(@"found %d streams", (int)streams.count);
     }];
 ```
 
-Otherwise, you can search streams by keyword by passing in a value.
+Otherwise, you can search for all streams by passing a nil keyword.
 
 ### User Search
 
 To get all streams associated with a user, simply call:
 
 ```obj-c
-    [[KFAPIClient sharedClient] requestStreamsForUsername:@"kickflip-user" callbackBlock:^(NSArray *streams, NSError *error) {
+    [[KFAPIClient sharedClient] requestStreamsForUsername:@"kickflip-user" pageNumber:1 itemsPerPage:25 callbackBlock:^(NSArray *streams, KFPaginationInfo *paginationInfo, NSError *error) {
         NSLog(@"found %d public streams for user", (int)streams.count);
     }];
 ```
@@ -151,7 +151,7 @@ To get all streams associated with a user, simply call:
 Sometimes you want to find all streams within a certain geographic region. Use a CLLocation and a CLLocationDistance for radius as your parameters.
 
 ```obj-c
-    [[KFAPIClient sharedClient] requestStreamsForLocation:currentLocation radius:100 callbackBlock:^(NSArray *streams, NSError *error) {
+    [[KFAPIClient sharedClient] requestStreamsForLocation:currentLocation radius:100 pageNumber:1 itemsPerPage:25 callbackBlock:^(NSArray *streams, KFPaginationInfo *paginationInfo, NSError *error) {
         NSLog(@"found %d streams near %@", (int)streams.count, currentLocation);
     }];
 ```
