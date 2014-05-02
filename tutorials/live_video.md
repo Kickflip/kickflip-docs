@@ -1,4 +1,4 @@
-# Adding Live Video Broadcasting To Your Apps
+# How to Add Live Video Broadcasting To Your iOS and Android Apps
 
 ![Kickflip live broadcast screenshot](http://i.imgur.com/ELljE1a.jpg)
 
