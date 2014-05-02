@@ -9,17 +9,29 @@ This guide will show you everything you need to add simple live video broadcasti
 This document assumes you've registered a Kickflip application and included the Kickflip SDK in your iOS or Android project as covered in the [Getting Started](https://github.com/Kickflip/kickflip-docs/blob/master/tutorials/getting_started.md) guide.
 
 ## Imports
+Once you're all set up, you'll first need to import the Kickflip SDK into your projects like so:
+
+##### iOS
+```objc
+#import "Kickflip.h"
+```
+
+##### Android
+```java
+import io.kickflip.sdk.Kickflip;
+import io.kickflip.sdk.av.BroadcastListener;
+```
 
 ## Providing your Kickflip Client ID and Secret
 
-From your Kickflip dashboard, copy your Application's CLIENT_ID and CLIENT_SECRET into your apps.
+Next, from your Kickflip dashboard, copy your Application's CLIENT_ID and CLIENT_SECRET into your apps.
 
-**iOS**
+###### iOS
 ```objc
 [Kickflip setupWithAPIKey:@"CLIENT_ID" secret:@"CLIENT_SECRET"];
 ```
 
-**Android**
+##### Android
 ```java
 Kickflip.setup(this, "CLIENT_ID", "CLIENT_SECRET");
 ```
@@ -30,7 +42,7 @@ Where `this` is your host `Activity` instance.
 
 These snippets will show the Kickflip broadcasting UI and allow a user to start, share and then stop one live broadcast. You should likely tie these snippets to an interaction event such as a button press.
 
-**iOS**
+##### iOS
 ```objc
 [Kickflip presentBroadcasterFromViewController:self ready:^(KFStream *stream, NSError *error){ 
     if (stream) {
@@ -39,7 +51,8 @@ These snippets will show the Kickflip broadcasting UI and allow a user to start,
 } 
 completion:nil];
 ```
-**Android**
+
+##### Android
 
 ```java
 Kickflip.startBroadcastActivity(this, new BroadcastListener() {
@@ -77,7 +90,19 @@ A broadcast is ended when the user touches the stop button revealed in the broad
 
 ## Playback
 
+Your app will likely also need to watch the live and previously recorded streams of other users.
+
 ### Native
+
+##### iOS
+```objc
+// TODO
+```
+
+##### Android
+```java
+// TODO
+```
 
 ### Web
 
