@@ -26,7 +26,7 @@ import io.kickflip.sdk.av.BroadcastListener;
 
 Next, from your Kickflip dashboard, copy your Application's CLIENT_ID and CLIENT_SECRET into your apps.
 
-###### iOS
+##### iOS
 ```objc
 [Kickflip setupWithAPIKey:@"CLIENT_ID" secret:@"CLIENT_SECRET"];
 ```
