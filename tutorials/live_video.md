@@ -6,6 +6,8 @@
 
 This guide will show you everything you need to add simple live video broadcasting  to your iOS and Android applications with the [Kickflip](https://kickflip.io) SDK.
 
+All Kickflip streams are backed by the cloud, so they'll be able to be viewed by thousands of people simultaneously with no loss of quality. They're also stored for later viewing.
+
 This document assumes you've registered a Kickflip application and included the Kickflip SDK in your iOS or Android project as covered in the [Getting Started](https://github.com/Kickflip/kickflip-docs/blob/master/tutorials/getting_started.md) guide.
 
 ## Imports
@@ -227,3 +229,7 @@ This should then give you a player which looks something like this:
 ![The handsome @OnlyInAmerica sporting the latest in web video fashion.](https://i.imgur.com/MjbBm9i.png)
 
 Tada!
+
+## Next Steps
+
+If you're interested in adding more advanced features to your app, such as user account management, stream searching, geotagging and more, check out the [building your own streaming video service guide](cloning_livestream.md).
