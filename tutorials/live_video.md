@@ -90,7 +90,7 @@ A broadcast is ended when the user touches the stop button revealed in the broad
 
 ## Playback
 
-Your app will likely also need to watch the live and previously recorded streams of other users.
+Your app will likely also need to watch the live and previously recorded streams of other users. This code will allow you to play the streams natively inside your applications, or on the web with native web players and flash players.
 
 ### Native
 
