@@ -29,24 +29,24 @@ The Kickflip Android client will automatically request a new user on launch if o
 You can attach additional information in the `extraInfo` field. If a username is not supplied, one will be randomly generated on the server. You can use this info to link to your own user account system, or use ours.
 
 ```java
-	KickflipApiClient apiClient = Kickflip.getApiClient(this);
-	apiClient.createNewUser(
-			"username", 
-			"password", 
-			"Any other key/values you would want", 
-			new KickflipCallback() {
-	            @Override
-	            public void onSuccess(Response response) {
-	            User newUser = (User) response;
-	            	Log.i("Hooray", "You've got a new user: " + newUser.getName());
-	            }
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.createNewUser(
+		"username", 
+		"password", 
+		"Any other key/values you would want", 
+		new KickflipCallback() {
+            @Override
+            public void onSuccess(Response response) {
+            	User newUser = (User) response;
+            	Log.i("Hooray", "You've got a new user: " + newUser.getName());
+            }
 
-	            @Override
-	            public void onError(KickflipException error) {
-	                Log.w(TAG, "createNewUser Error: " + error.getMessage());
-	            }
-	        }
-	);
+            @Override
+            public void onError(KickflipException error) {
+                Log.w(TAG, "createNewUser Error: " + error.getMessage());
+            }
+        }
+);
 ```
 
 
@@ -60,7 +60,7 @@ apiClient.setUserInfo("newPassword", "email", "displayName", "extraInfo",
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        User newUser = (User) response;
+        	User newUser = (User) response;
         	Log.i("Hooray", "You modified user: " + newUser.getName());
         }
 
@@ -81,7 +81,7 @@ apiClient.getUserInfo("userName"
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        User newUser = (User) response;
+       		User newUser = (User) response;
         	Log.i("Hooray", "You modified user: " + newUser.getName());
         }
 
@@ -103,7 +103,7 @@ apiClient.loginUser("userName", "password",
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        User newUser = (User) response;
+        	User newUser = (User) response;
         	Log.i("Hooray", "You logged in as: " + newUser.getName());
         }
 
@@ -133,7 +133,7 @@ apiClient.startStream(newStream,
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        Stream newStream = (Stream) response;
+        	Stream newStream = (Stream) response;
         	Log.i("Hooray", "You started stream " + stream);
         }
 
@@ -153,7 +153,7 @@ apiClient.stopStream(stream,
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        Stream newStream = (Stream) response;
+        	Stream newStream = (Stream) response;
         	Log.i("Hooray", "You stopped stream " + stream);
         }
 
@@ -175,7 +175,7 @@ apiClient.setStreamInfo(updatedStream,
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        Stream newStream = (Stream) response;
+        	Stream newStream = (Stream) response;
         	Log.i("Hooray", "You updated stream " + stream);
         }
 
@@ -204,7 +204,7 @@ apiClient.getStreamsByKeyword(null,
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        List<Stream> streams = (List<Stream>) response;
+        	List<Stream> streams = (List<Stream>) response;
         	Log.i("Hooray", "You got " + streams.size() + " streams");
         }
 
@@ -229,7 +229,7 @@ apiClient.getStreamsByUser("username",
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        List<Stream> streams = (List<Stream>) response;
+        	List<Stream> streams = (List<Stream>) response;
         	Log.i("Hooray", "You got " + streams.size() + " streams");
         }
 
@@ -250,7 +250,7 @@ apiClient.getStreamsByLocation(currentLocation, 5000
 	new KickflipCallback() {
         @Override
         public void onSuccess(Response response) {
-        List<Stream> streams = (List<Stream>) response;
+        	List<Stream> streams = (List<Stream>) response;
         	Log.i("Hooray", "You got " + streams.size() + " streams");
         }
 
