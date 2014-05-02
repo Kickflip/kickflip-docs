@@ -1,19 +1,39 @@
-# Adding Live Video Broadcasting To Your Apps
+# How to Add Live Video Broadcasting To Your iOS and Android Apps
+
+![Kickflip live broadcast screenshot](http://i.imgur.com/ELljE1a.jpg)
 
 ## Overview
 
-This document assumes you've created a Kickflip app and included the Kickflip SDK in your iOS or Android project as covered in the [Getting Started](https://github.com/Kickflip/kickflip-docs/blob/master/tutorials/getting_started.md) guide.
+This guide will show you everything you need to add simple live video broadcasting  to your iOS and Android applications with the [Kickflip](https://kickflip.io) SDK.
+
+All Kickflip streams are backed by the cloud, so they'll be able to be viewed by thousands of people simultaneously with no loss of quality. They're also stored for later viewing.
+
+This document assumes you've registered a Kickflip application and included the Kickflip SDK in your iOS or Android project as covered in the [Getting Started](https://github.com/Kickflip/kickflip-docs/blob/master/tutorials/getting_started.md) guide.
+
+## Imports
+Once you're all set up, you'll first need to import the Kickflip SDK into your projects like so:
+
+##### iOS
+```objc
+#import "Kickflip.h"
+```
+
+##### Android
+```java
+import io.kickflip.sdk.Kickflip;
+import io.kickflip.sdk.av.BroadcastListener;
+```
 
 ## Providing your Kickflip Client ID and Secret
 
-First make sure you setup Kickflip with the Client ID and Secret available from your Kickflip account dashboard.
+Next, from your Kickflip dashboard, copy your Application's CLIENT_ID and CLIENT_SECRET into your apps.
 
-**iOS**
+##### iOS
 ```objc
 [Kickflip setupWithAPIKey:@"CLIENT_ID" secret:@"CLIENT_SECRET"];
 ```
 
-**Android**
+##### Android
 ```java
 Kickflip.setup(this, "CLIENT_ID", "CLIENT_SECRET");
 ```
@@ -22,9 +42,9 @@ Where `this` is your host `Activity` instance.
 
 ## Starting a Broadcast
 
-Show the Kickflip broadcasting UI and allow a user to start and then stop one live broadcast.
+These snippets will show the Kickflip broadcasting UI and allow a user to start, share and then stop one live broadcast. You should likely tie these snippets to an interaction event such as a button press.
 
-**iOS**
+##### iOS
 ```objc
 [Kickflip presentBroadcasterFromViewController:self ready:^(KFStream *stream, NSError *error){ 
     if (stream) {
@@ -33,7 +53,8 @@ Show the Kickflip broadcasting UI and allow a user to start and then stop one li
 } 
 completion:nil];
 ```
-**Android**
+
+##### Android
 
 ```java
 Kickflip.startBroadcastActivity(this, new BroadcastListener() {
@@ -67,11 +88,23 @@ Kickflip.startBroadcastActivity(this, new BroadcastListener() {
 ```
 
 ## Ending a Broadcast
-A broadcast is ended when the user touches the stop button revealed in the broadcasting UI.
+A broadcast is ended when the user touches the stop button revealed in the broadcasting UI. This will end the life of your broadcaster view.
 
 ## Playback
 
+Your app will likely also need to watch the live and previously recorded streams of other users. This code will allow you to play the streams natively inside your applications, or on the web with native web players and flash players.
+
 ### Native
+
+##### iOS
+```objc
+// TODO
+```
+
+##### Android
+```java
+// TODO
+```
 
 ### Web
 
@@ -97,7 +130,7 @@ Since it's all just HTML, you can also style your elements using normal CSS.
 
 #### Playing HLS Live Video Streams with Flash
 
-To ensure larger playback compatibility for browsers such as Firefox and Internet Explorer, you'll need to use a Flash-based player for your streams. Fortunately, there are now free and open source flash players which can process Kickflip HLS streams. Note that many of these free flash players are still under active development. There are also
+To ensure larger playback compatibility for browsers such as Firefox and Internet Explorer, you'll need to use a Flash-based player for your streams. Fortunately, there are now free and open source flash players which can process Kickflip HLS streams.
 
 We recommend using Adobe's free and open source [Open Source Media Framework (OSMF)](http://streambox.fr/HLSProvider/osmf/StrobeMediaPlayback.html) player with the free [HLSProvider](https://github.com/mangui/HLSprovider) plugin. HLSProvider also works with JWPlayer5, JWPlayer6, Flowplayer, GrindPlayer, and chromeless without any additional player at all. 
 
@@ -194,5 +227,9 @@ Be sure to replace *YOUR_STATIC_FOLDER*, *YOUR_STREAM_URL.m3u8* and *YOUR_STREAM
 This should then give you a player which looks something like this:
 
 ![The handsome @OnlyInAmerica sporting the latest in web video fashion.](https://i.imgur.com/MjbBm9i.png)
-=======
-To ensure larger playback compatibility for browsers such as Firefox and Internet Explorer, you'll need to use a Flash-based player for your streams. Fortunately, there are now free and open source flash players which can process Kickflip HLS streams.
+
+Tada!
+
+## Next Steps
+
+If you're interested in adding more advanced features to your app, such as user account management, stream searching, geotagging and more, check out the [building your own streaming video service guide](cloning_livestream.md).
