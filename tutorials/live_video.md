@@ -1,12 +1,18 @@
 # Adding Live Video Broadcasting To Your Apps
 
+![Kickflip live broadcast screenshot](http://i.imgur.com/ELljE1a.jpg)
+
 ## Overview
 
-This document assumes you've created a Kickflip app and included the Kickflip SDK in your iOS or Android project as covered in the [Getting Started](https://github.com/Kickflip/kickflip-docs/blob/master/tutorials/getting_started.md) guide.
+This guide will show you everything you need to add simple live video broadcasting  to your iOS and Android applications with the [Kickflip](https://kickflip.io) SDK.
+
+This document assumes you've registered a Kickflip application and included the Kickflip SDK in your iOS or Android project as covered in the [Getting Started](https://github.com/Kickflip/kickflip-docs/blob/master/tutorials/getting_started.md) guide.
+
+## Imports
 
 ## Providing your Kickflip Client ID and Secret
 
-First make sure you setup Kickflip with the Client ID and Secret available from your Kickflip account dashboard.
+From your Kickflip dashboard, copy your Application's CLIENT_ID and CLIENT_SECRET into your apps.
 
 **iOS**
 ```objc
@@ -22,7 +28,7 @@ Where `this` is your host `Activity` instance.
 
 ## Starting a Broadcast
 
-Show the Kickflip broadcasting UI and allow a user to start and then stop one live broadcast.
+These snippets will show the Kickflip broadcasting UI and allow a user to start, share and then stop one live broadcast. You should likely tie these snippets to an interaction event such as a button press.
 
 **iOS**
 ```objc
@@ -67,7 +73,7 @@ Kickflip.startBroadcastActivity(this, new BroadcastListener() {
 ```
 
 ## Ending a Broadcast
-A broadcast is ended when the user touches the stop button revealed in the broadcasting UI.
+A broadcast is ended when the user touches the stop button revealed in the broadcasting UI. This will end the life of your broadcaster view.
 
 ## Playback
 
