@@ -1,101 +1,262 @@
 Kickflip Android SDK
 =============
 
-This document provides a more in-depth look at the Kickflip Android SDK.
-
-**Ready to Develop?**
-See the [kickflip-android-sdk](https://github.com/Kickflip/kickflip-android-sdk) project for [QuickStart](https://github.com/Kickflip/kickflip-android-sdk#quickstart) and [Build instructions](https://github.com/Kickflip/kickflip-android-sdk#building-this-project) if you're ready to start developing.
-
-## What is the Kickflip Android SDK?
-
-We designed the Kickflip Android SDK to make cloud video applications for Android a joy. When paired with a [Kickflip.io](https://kickflip.io) account **this SDK can manage all the plumbing for your cloud video application**: It broadcasts live HD [HTTP-HLS](http://en.wikipedia.org/wiki/HTTP_Live_Streaming) video, manages user profiles, and allows you to query broadcasts made by your users.
-
-See the [Kickflip Example Android App](https://github.com/Kickflip/kickflip-android-example) for a basic live video social network written with this SDK.
-
-Beyond a Kickflip.io client, this SDK is a collection of modular audio and video components that enable powerful hardware-accelerated video products for the Android platform. At the top level, you can use this SDK and a Kickflip account to create a live video social network without having to worry about video encoding or storage. With the lower-level classes you could create a unique kind of camera with realtime OpenGL shaders.
-
+Documentation for the Android Kickflip API.
 
 ## Setting up
 
-Before you use the Kickflip API, you must first get your access tokens from the Kickflip dashboard.
+Before you use the Kickflip API, you must first get your access tokens from the [Kickflip dashboard](https://kickflip.io/dash/).
 
-### Get the SDK
+## Authentication
 
-See the [kickflip-android-sdk quickstart guide](https://github.com/kickflip/kickflip-android-sdk#quickstart).	
-
-## Architecture
-
-### Kickflip
-
-[`Kickflip`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/Kickflip.java) is the top-level class for easy interaction with the SDK features.
-
-The first thing you'll do is register your application with Kickflip:
+Kickflip uses OAuth2 as an authentication protocol. The Android SDK handles this for you during the setup phase.
 
 ```java
-	Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
-```
-This method returns a [`KickflipApiClient`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/api/KickflipApiClient.java) ready to perform API actions on behalf of your account.
-
-```java
-	KickflipApiClient apiClient = Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
+Kickflip.setup(this, "CLIENT_ID", "CLIENT_SECRET");
 ```
 
-To start broadcasting video:
+The `setup` method returns a `KickflipApiClient` initialized with the provided credentials. You can also retrieve the client at any time following with `Kickflip#getApiClient(Context context)`
+
+## Users
+
+All Kickflip streams must be started by Kickflip users. Users are necessary to make sure that people cannot overwrite each other. Users can be ephemeral, and clients can create new users as much as they like. However, in most situations
+a single user per client will suffice.
+
+The Kickflip Android client will automatically request a new user on launch if one is not found. You can request a more permanent user with specific information as well.
+
+### Creating a New User
+
+You can attach additional information in the `extraInfo` field. If a username is not supplied, one will be randomly generated on the server. You can use this info to link to your own user account system, or use ours.
 
 ```java
-	Kickflip.setup(this, CLIENT_ID, CLIENT_SECRET);
-	Kickflip.startBroadcastActivity(this, new BroadcastListener() {
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.createNewUser(
+		"username", 
+		"password", 
+		"Any other key/values you would want", 
+		new KickflipCallback() {
+            @Override
+            public void onSuccess(Response response) {
+            	User newUser = (User) response;
+            	Log.i("Hooray", "You've got a new user: " + newUser.getName());
+            }
+
+            @Override
+            public void onError(KickflipException error) {
+                Log.w(TAG, "createNewUser Error: " + error.getMessage());
+            }
+        }
+);
+```
+
+
+### Changing a User's Information
+
+To change any information about a user:
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.setUserInfo("newPassword", "email", "displayName", "extraInfo", 
+	new KickflipCallback() {
         @Override
-        public void onBroadcastStart() {
-        
+        public void onSuccess(Response response) {
+        	User newUser = (User) response;
+        	Log.i("Hooray", "You modified user: " + newUser.getName());
         }
 
         @Override
-        public void onBroadcastLive(String watchUrl) { 
-        	Log.i("Kickflip", "This phone is live at " + watchUrl);       
-        }
-
-        @Override
-        public void onBroadcastStop() {
-        
-        }
-
-        @Override
-        public void onBroadcastError() {
-        
+        public void onError(KickflipException error) {
+            Log.w(TAG, "setUserInfo Error: " + error.getMessage());
         }
     });
-	```
-	
-To play a Kickflip broadcast within your app:
-
-```java
-	Kickflip.setup(this, "CLIENT_ID, CLIENT_SECRET);
-	Kickflip.startMediaPlayerActivity(this, "http://example.com/stream.m3u8");
 ```
 
-You can obtain a Kickflip [`Stream`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/api/json/Stream.java) raw media url with `stream.getStreamUrl()`. For an HLS broadcast this is a url of form https://xxx.xxx/xxx.m3u8
- 
+### Getting a User's Info
+
+Get the _publicly available_ information about any user:
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.getUserInfo("userName" 
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+       		User newUser = (User) response;
+        	Log.i("Hooray", "You modified user: " + newUser.getName());
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "setUserInfo Error: " + error.getMessage());
+        }
+    });
+
+```
+
+### Getting an Existing User's Keys
+
+If you wish to persist a user's account accross devices, you'll need to supply a correct **username** and **password**:
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.loginUser("userName", "password",
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	User newUser = (User) response;
+        	Log.i("Hooray", "You logged in as: " + newUser.getName());
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "loginUser Error: " + error.getMessage());
+        }
+    });
+
+```
+
+This will return all of the necessary credentials to use the API and the upload endpoints.
+
+## Streams
+
+Normally you won't have to worry about manually starting and stopping streams because it is all handled for you by `KFBroadcastViewController`.
+
+### Starting a new Stream
+
+Kickflip clients must call the start stream endpoint in order to get the most recent access tokens and the instructions for the stream parameters.
+
+To start a stream, first call:
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.startStream(newStream,
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	Stream newStream = (Stream) response;
+        	Log.i("Hooray", "You started stream " + stream);
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "startStream Error: " + error.getMessage());
+        }
+    });
+
+```
+
+### Stopping
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.stopStream(stream,
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	Stream newStream = (Stream) response;
+        	Log.i("Hooray", "You stopped stream " + stream);
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "stopStream Error: " + error.getMessage());
+        }
+    });
+
+```
+
+### Updating a Stream
+
+Information about a stream can be set via the stream change endpoint:
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.setStreamInfo(updatedStream,
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	Stream newStream = (Stream) response;
+        	Log.i("Hooray", "You updated stream " + stream);
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "setStreamInfo Error: " + error.getMessage());
+        }
+    });
+
+```
+
+Note, this won't update the stream object, it will return a new updatedStream object.
 
 
-### Activities and Fragments
+## Search and Feeds
 
-[`BroadcastActivity`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/BroadcastActivity.java) hosts a single [`BroadcastFragment`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/fragment/BroadcastFragment.java) which manages every aspect of the broadcasting use-case for you. `BroadcastFragment` take care of passing Activity lifecycle hooks to the underlying classes and is a great reference if you decide to directly interface with the base classes.
+Kickflip also provides API end points for searching publicly available streams associated with an App.
 
-### Recording (The Full Stack)
+### Basic Search
 
-[`Broadcaster`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/av/Broadcaster.java) and [`AVRecorder`](https://github.com/Kickflip/kickflip-android-sdk/blob/preview/sdk/src/main/java/io/kickflip/sdk/av/AVRecorder.java) are the high-level recording classes with APIs that are limited to starting, stopping, and a few other configuration methods. Think of `AVRecorder` as a supercharged version of Android's [`MediaRecorder`](http://developer.android.com/reference/android/media/MediaRecorder.html). `Broadcaster` extends `AVRecorder` and handles streaming to your Kickflip account transparently. 
+To search all streams, simply call the below method with no keyword:
 
-### Encoding
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.getStreamsByKeyword(null,
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	List<Stream> streams = (List<Stream>) response;
+        	Log.i("Hooray", "You got " + streams.size() + " streams");
+        }
 
-`CameraEncoder` and `MicrophoneEncoder` abstract the management of device hardware like the Camera and Microphone behind a simple API for configuring, starting, and stopping.
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "getStreamsByKeyword Error: " + error.getMessage());
+        }
+    });
 
-Their parent classes are `VideoEncoderCore` and `AudioEncoderCore`, respectively. These two classes handle video/audio specific configuration of `AndroidEncoder`: our wrapper around Android's `MediaCodec`.
+```
 
-Under the hood, we use Android's `MediaCodec` class for encoding H.264 Video and AAC audio with hardware acceleration. Due to the performance requirements of real-time HD encoding, it's not currently feasible to leverage FFmpeg as a software encoder.
+Otherwise, you can search streams by keyword by passing in a value.
 
-### Muxing
+### User Search
 
-The Muxer is the heart of any recording configuration. Every recording session synchronizes on a single Muxer, which handles combining all Encoder outputs into a comprehensible output format.
+To get all streams associated with a user, simply call:
 
-Kickflip currently includes `FFmpegMuxer` and `AndroidMuxer`, which both implement the `Muxer` interface and thus can be used interchangeably. `AndroidMuxer` employs Android's built-in `MediaMuxer` and supports only MPEG-4 output. `FFmpegMuxer` harnesses the power of FFmpeg to write Encoder data to a variety of outputs such as HLS streams (MPEG-TS segments and a .m3u8 manifest file), RTMP streams (Flash Video written directly to an `rtmp://` endpoint), as well as local MPEG-4 files. `FFmpegMuxer` can be further developed to write most any output format that supports H.264 video and AAC audio.
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.getStreamsByUser("username",
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	List<Stream> streams = (List<Stream>) response;
+        	Log.i("Hooray", "You got " + streams.size() + " streams");
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "getStreamsByUser Error: " + error.getMessage());
+        }
+    });
+```
+
+### Location Search
+
+Sometimes you want to find all streams within a certain geographic region. Use a [Location](http://developer.android.com/reference/android/location/Location.html) and an int radius in meters as your parameters.
+
+```java
+KickflipApiClient apiClient = Kickflip.getApiClient(this);
+apiClient.getStreamsByLocation(currentLocation, 5000
+	new KickflipCallback() {
+        @Override
+        public void onSuccess(Response response) {
+        	List<Stream> streams = (List<Stream>) response;
+        	Log.i("Hooray", "You got " + streams.size() + " streams");
+        }
+
+        @Override
+        public void onError(KickflipException error) {
+            Log.w(TAG, "getStreamsByLocation Error: " + error.getMessage());
+        }
+    });
+```
