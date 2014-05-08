@@ -4,7 +4,7 @@ Kickflip API Docs
 =============
 
 Documentation for the web Kickflip API.
-http://i.imgur.com/WzMG5mv.gif
+
 ## Setting up
 
 Before you use the Kickflip API, you must first get your access tokens from the [Kickflip dashboard](https://kickflip.io/dash/).
