@@ -49,9 +49,13 @@ These snippets will show the Kickflip broadcasting UI and allow a user to start,
 [Kickflip presentBroadcasterFromViewController:self ready:^(KFStream *stream, NSError *error){ 
     if (stream) {
     	NSLog(@"Stream is ready to view at URL: %@", stream.streamURL);
+    } else {
+        NSLog(@"An error occurred: %@", error);
     }
 } 
-completion:nil];
+completion:^{
+    NSLog(@"Finished broadcasting.");
+}];
 ```
 
 ##### Android
@@ -98,7 +102,10 @@ Your app will likely also need to watch the live and previously recorded streams
 
 ##### iOS
 ```objc
-// TODO
+#import <MediaPlayer/MediaPlayer.h>
+...
+MPMoviePlayerViewController *movieView = [[MPMoviePlayerViewController alloc] initWithContentURL:stream.streamURL];
+[self presentViewController:movieView animated:YES completion:nil];
 ```
 
 ##### Android
