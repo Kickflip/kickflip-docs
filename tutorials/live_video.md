@@ -110,7 +110,15 @@ MPMoviePlayerViewController *movieView = [[MPMoviePlayerViewController alloc] in
 
 ##### Android
 ```java
-// TODO
+// Using Kickflip
+Kickflip.startMediaPlayerActivity(MyActivity.this, 
+	stream.getStreamUrl(), boolShouldStartPlayerAsNewTask);
+	
+// Using MediaPlayer
+mMediaPlayer = new MediaPlayer();
+mMediaPlayer.setSurface(displaySurface);
+mMediaPlayer.setDataSource(stream.getStreamUrl());
+mMediaPlayer.start();
 ```
 
 ### Web
