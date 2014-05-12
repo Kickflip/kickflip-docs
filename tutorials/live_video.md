@@ -108,12 +108,14 @@ MPMoviePlayerViewController *movieView = [[MPMoviePlayerViewController alloc] in
 [self presentViewController:movieView animated:YES completion:nil];
 ```
 
+For a more customizable solution, you may also be interested in the [VKVideoPlayer](https://github.com/viki-org/VKVideoPlayer).
+
 ##### Android
 ```java
 // Using Kickflip
-Kickflip.startMediaPlayerActivity(MyActivity.this, 
+Kickflip.startMediaPlayerActivity(MyActivity.this,
 	stream.getStreamUrl(), boolShouldStartPlayerAsNewTask);
-	
+
 // Using MediaPlayer
 mMediaPlayer = new MediaPlayer();
 mMediaPlayer.setSurface(displaySurface);
