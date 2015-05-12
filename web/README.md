@@ -30,7 +30,7 @@ a single user per client will suffice.
 
 To create a new user, call
 
-    https://kickflip.io/api/1.1/user/new/
+    https://kickflip.io/api/1.2/user/new/
 
 You can also POST an optional **username**, **email**, **password**, **display_name**, and **extra_info** to define a user's account information. If a username is not supplied, one will be randomly generated.
 
@@ -53,7 +53,7 @@ Sample response:
 
 To change any information about a user, call this URL
 
-    https://kickflip.io/api/1.1/user/change/
+    https://kickflip.io/api/1.2/user/change/
 
 and supply a **password**. You can then also define **email**, **display_name**, **extra_info** and **new_password**.
 
@@ -61,7 +61,7 @@ and supply a **password**. You can then also define **email**, **display_name**,
 
 Get the _publicly available_ information about any user, call this URL
 
-    https://kickflip.io/api/1.1/user/info/
+    https://kickflip.io/api/1.2/user/info/
 
 and supply a **'username'**.
 
@@ -69,7 +69,7 @@ and supply a **'username'**.
 
 If you wish to persist a user's account accross devices, you'll need to supply a correct **username** and **password** to this endpoint, 
 
-    https://kickflip.io/api/1.1/user/uuid/
+    https://kickflip.io/api/1.2/user/uuid/
 
 which will return all of the necessary credentials to use the API and the upload endpoints.
 
@@ -82,7 +82,7 @@ for the stream parameters.
 
 To start a stream, first call:
 
-    https://kickflip.io/api/1.1/stream/start/
+    https://kickflip.io/api/1.2/stream/start/
 
 supplying the user's **uuid**, as well as an optional **lat**, **lon**, **city**, **state** and **country** for geo-coded streams, and an optional **private** for private streams.
 
@@ -92,6 +92,8 @@ Sample response:
 {
    "aws_secret_key":"5R/B7GiAzXXXkGmR13Tk6HlTz95hQNnuHFd2dP/R",
    "aws_access_key":"AKIAJREVSXXXXQEOMGZ3A",
+   "aws_session_token":"STXXXXXXXXXXXXASDFASDF",
+   "aws_duration":"XXDURATIONVALUE",
    "aws_prefix": "appname/username/cd29739a-a9da-4deb-ba9c-e8f9f2a72c85/"
    "success":true,
    "chat_url":"Not implemented yet",
@@ -110,7 +112,7 @@ Kickflip clients may 'pause' a live stream to indicate that they will resume thi
 
 To pause a stream, call:
 
-    https://kickflip.io/api/1.1/stream/pause/
+    https://kickflip.io/api/1.2/stream/pause/
 
 Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to update the location of the stream.
 
@@ -120,7 +122,7 @@ Similarly, clients can 'resume' a live stream.
 
 To resume a stream, call:
 
-    https://kickflip.io/api/1.1/stream/resume/
+    https://kickflip.io/api/1.2/stream/resume/
 
 Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to update the location of the stream.
 
@@ -128,7 +130,7 @@ Clients must include a user's **uuid** and **stream\_id**, and may include an op
 
 Streams which are finished must call:
 
-    https://kickflip.io/api/1.1/stream/stop/
+    https://kickflip.io/api/1.2/stream/stop/
 
 Clients must include a user's **uuid** and **stream\_id**, and may include an optional **lat** and **lon** to define the end of a stream location.
 
@@ -136,7 +138,7 @@ Clients must include a user's **uuid** and **stream\_id**, and may include an op
 
 Information about a stream can be set via the stream change endpoint:
 
-    https://kickflip.io/api/1.1/stream/change/
+    https://kickflip.io/api/1.2/stream/change/
 
 Which will set a stream's **start_lat**, **start_lon**, **end_lat**, **end_lon**, **city**, *state**, **country**, **private**, **title**, **description**, **extra_info**, **thumbnail_url** and **deleted** fields.
 
@@ -144,7 +146,7 @@ Which will set a stream's **start_lat**, **start_lon**, **end_lat**, **end_lon**
 
 Information about a public stream can be retreived via the stream info endpoint:
 
-    https://kickflip.io/api/1.1/stream/info/
+    https://kickflip.io/api/1.2/stream/info/
 
 for any public stream which you send a **stream_id** for.
 
@@ -152,7 +154,7 @@ for any public stream which you send a **stream_id** for.
 
 Streams which are finished must call:
 
-    https://kickflip.io/api/1.1/stream/flag/
+    https://kickflip.io/api/1.2/stream/flag/
 
 If users wish to report inappropriate streams, they may do so by calling the flag endpoint with any valid **stream_id** to increase the flag count of that object. Users may only flag a Stream once per stream.
 
@@ -164,7 +166,7 @@ Kickflip also provides API end points for searching publicly available streams a
 
 To search all streams, simply call:
 
-     https://kickflip.io/api/1.1/search/
+     https://kickflip.io/api/1.2/search/
 
 to receive a paginated list of all streams. Adding a **keyword** field to the POST request will filter all streams with that value. Adding a **results_per_page** field will set the pagination number, and **page** will get the page offset. The resulting streams will be returned as a list under the **streams** key.
 
@@ -172,7 +174,7 @@ to receive a paginated list of all streams. Adding a **keyword** field to the PO
 
 To get all streams associated with a user, simply call:
 
-    https://kickflip.io/api/1.1/search/user/
+    https://kickflip.io/api/1.2/search/user/
 
 with a valid **username**.
 
@@ -180,6 +182,6 @@ with a valid **username**.
 
 To get all streams associated with a location, call:
 
-    https://kickflip.io/api/1.1/search/location/
+    https://kickflip.io/api/1.2/search/location/
 
 with a valid **lat**, **lon** and a **radius** (in degrees).
